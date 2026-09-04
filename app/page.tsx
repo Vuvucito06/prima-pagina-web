@@ -80,7 +80,7 @@ export default function Page() {
           </TableBody>
         </Table>
       </div>
-
+      {/* Ar fi util să adăugi atributul name pentru acest câmp, astfel încât valoarea introdusă să poată fi identificată mai ușor la procesarea formularului */}
       {/* 6. FORMULAR */}
       <form
         onSubmit={handleSubmit}
