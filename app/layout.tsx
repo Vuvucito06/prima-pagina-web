@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 
+{/*Ar fi bine să păstrezi același stil de formatare pentru toate configurările fonturilor, pentru a face codul mai consistent și mai ușor de citit*/}
 const oxaniumHeading = Oxanium({subsets:['latin'],variable:'--font-heading'});
 
 const raleway = Raleway({subsets:['latin'],variable:'--font-sans'})
