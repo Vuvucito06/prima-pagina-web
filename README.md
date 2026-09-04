@@ -19,3 +19,5 @@ To use the components in your app, import them as follows:
 ```tsx
 import { Button } from "@/components/ui/button";
 ```
+# Rezultatul
+<img width="823" height="940" alt="image" src="https://github.com/user-attachments/assets/f10b0475-b10c-4c14-93bb-8dc46d9de811" />
