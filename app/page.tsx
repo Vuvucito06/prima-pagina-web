@@ -1,5 +1,6 @@
 "use client"
 
+import { type FormEvent, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,10 +13,31 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+type Card = {
+  id: string
+  title: string
+  description: string
+}
+
 export default function Page() {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert("Form submitted!")
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [cards, setCards] = useState<Card[]>([])
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    setCards((currentCards) => [
+      ...currentCards,
+      {
+        id: crypto.randomUUID(),
+        title: title.trim(),
+        description: description.trim(),
+      },
+    ])
+
+    setTitle("")
+    setDescription("")
   }
 
   // 1x1 Pixel Solid Grey Base64 Image Placeholder
@@ -81,19 +103,57 @@ export default function Page() {
         </Table>
       </div>
 
-      {/* 6. FORMULAR */}
+      {/* 6. FORMULAR ȘI CARDURI */}
       <form
         onSubmit={handleSubmit}
         className="space-y-4 rounded-lg border bg-card p-4"
       >
         <div className="space-y-2">
-          <label className="text-sm leading-none font-medium">Numele tău</label>
-          <Input type="text" placeholder="Introdu numele..." required />
+          <label htmlFor="title" className="text-sm font-medium">
+            Titlu
+          </label>
+          <Input
+            id="title"
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+            placeholder="Introduceți titlul"
+            required
+          />
         </div>
+
+        <div className="space-y-2">
+          <label htmlFor="description" className="text-sm font-medium">
+            Descriere
+          </label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+            placeholder="Introduceți descrierea"
+            required
+            rows={4}
+            className="w-full resize-none rounded-md border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-ring"
+          />
+        </div>
+
         <Button type="submit" className="w-full">
-          Trimite
+          Adaugă
         </Button>
       </form>
+
+      <section className="space-y-3">
+        {cards.map((card) => (
+          <article
+            key={card.id}
+            className="rounded-lg border bg-card p-4 shadow-sm"
+          >
+            <h2 className="text-xl font-semibold">{card.title}</h2>
+            <p className="mt-2 whitespace-pre-wrap text-muted-foreground">
+              {card.description}
+            </p>
+          </article>
+        ))}
+      </section>
     </div>
   )
 }
