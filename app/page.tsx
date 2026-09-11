@@ -2,6 +2,7 @@
 
 import { type FormEvent, useState } from "react"
 import Link from "next/link"
+import { ShoppingCart } from "@/components/shopping-cart"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -103,7 +104,10 @@ export default function Page() {
         </Table>
       </div>
 
-      {/* 6. FORMULAR ȘI CARDURI */}
+      {/* 6. COȘ DE CUMPĂRĂTURI */}
+      <ShoppingCart />
+
+      {/* 7. FORMULAR ȘI CARDURI */}
       <form
         onSubmit={handleSubmit}
         className="space-y-4 rounded-lg border bg-card p-4"
