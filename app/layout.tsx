@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Raleway, Oxanium } from "next/font/google"
+import { Geist_Mono, Raleway, Oxanium } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="ro"
       suppressHydrationWarning
       className={cn("antialiased", fontMono.variable, "font-sans", raleway.variable, oxaniumHeading.variable)}
     >
